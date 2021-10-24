@@ -1,0 +1,54 @@
+{
+  "name": "blank-project",
+  "version": "1.0.0",
+  "description": "A blank javascript project template.",
+  "main": "capacitor.js",
+  "keywords": [
+    "capacitor",
+    "mobile"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "rmdir": "node -e \"var fs = require('fs'); process.argv.slice(1).map((fpath) => fs.rmdirSync(fpath, { recursive: true })); process.exit(0);\"",
+    "prebuild": "echo \"Removing Directory\" && npm run rmdir -- www/js www/css www/img",
+    "copy": "cpx-fixed \"dev/img/**\" \"www/img/\" ",
+    "postbuild": "echo \"Copy Images\" && npm run copy",
+    "build-js": "esbuild dev/js/index.js --bundle --outfile=www/js/index.js --sourcemap",
+    "build--css": "esbuild dev/css/style.css --bundle --outfile=www/css/style.css",
+    "build": "npm run build-js && npm run build--css",
+    "clean-www": "echo \"Removing WWW Files\" && npm run rmdir -- www/js www/css www/img",
+    "electron-setup": "npm init && npm i && npm i electron",
+    "auto-run": "npm run build && npm start",
+    "check-css": "cpx-fixed \"dev/css/**\" \"www/css/\" --verbose --watch",
+    "check-imgs": "cpx-fixed \"dev/img/**\" \"www/img/\" --verbose --watch",
+    "dev-run": "start npm run build--css && start npm run check-css && start npm run check-imgs && start esbuild dev/js/index.js --bundle --outfile=www/js/index.js --sourcemap --bundle --watch",
+    "git-init": "git init && git add . && git remote add origin https://github.com/tmg-js-modules/blank-project.git && git branch -M main",
+    "git-push": "git add . && git commit -m \"Update Blank Project\" && git push -u origin main",
+    "project-setup": "npm run electron-setup && npm run git-init"
+  },
+  "dependencies": {
+    "@capacitor/android": "^3.2.5",
+    "@capacitor/camera": "latest",
+    "@capacitor/core": "^3.2.5",
+    "@capacitor/splash-screen": "latest",
+    "@tmg-js-modules/colliders": "github:tmg-js-modules/colliders",
+    "@tmg-js-modules/graphics": "github:tmg-js-modules/graphics",
+    "@tmg-js-modules/image-loader": "github:tmg-js-modules/image-loader",
+    "@tmg-js-modules/input-mouse": "github:tmg-js-modules/input-mouse",
+    "@tmg-js-modules/screen": "github:tmg-js-modules/screen",
+    "electron": "^15.3.0"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^3.2.5",
+    "@tmg-js-modules/colliders": "github:tmg-js-modules/colliders",
+    "@tmg-js-modules/graphics": "github:tmg-js-modules/graphics",
+    "@tmg-js-modules/image-loader": "github:tmg-js-modules/image-loader",
+    "@tmg-js-modules/input-mouse": "github:tmg-js-modules/input-mouse",
+    "@tmg-js-modules/screen": "github:tmg-js-modules/screen",
+    "@tmg-js-modules/touch": "github:tmg-js-modules/touch",
+    "cpx-fixed": "^1.6.0",
+    "esbuild": "^0.13.8"
+  },
+  "author": "Johnathan Mueller",
+  "license": "ISC"
+}
