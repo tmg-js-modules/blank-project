@@ -23,7 +23,7 @@
     "check-imgs": "cpx-fixed \"dev/img/**\" \"www/img/\" --verbose --watch",
     "dev-run": "start npm run build--css && start npm run check-css && start npm run check-imgs && start esbuild dev/js/index.js --bundle --outfile=www/js/index.js --sourcemap --bundle --watch",
     "git-init": "git init && git add . && git remote add origin https://github.com/tmg-js-modules/blank-project.git && git branch -M main",
-    "git-push": "git add . && git commit -m \"Update Blank Project\" && git push -u origin main",
+    "git-push": "npm run clean-www && git add . && git commit -m \"Update Blank Project\" && git push -u origin main",
     "project-setup": "npm run electron-setup && npm run git-init"
   },
   "dependencies": {
