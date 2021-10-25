@@ -88,10 +88,10 @@ window.addEventListener('load', function(){
     Screen.Init(game);
     game.init();
 
-    Mouse.Mouse_Move(game, canvas);
-    Mouse.Mouse_Leave(game);
-    Mouse.Mouse_Down(game);
-    Mouse.Mouse_Up(game);
+    Mouse.Move(game, canvas);
+    Mouse.Leave(game);
+    Mouse.Down(game);
+    Mouse.Up(game);
 
     let lastTime = 1;
     function animate(timeStamp) {
